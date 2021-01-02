@@ -1,28 +1,31 @@
 package ua.vvp.Furmanov.humanService;
-
-
 import ua.vvp.Furmanov.entities.Human;
 import ua.vvp.Furmanov.utils.HumanList;
 
-import java.util.Scanner;
-
 public class HumanService {
 
-    Scanner sc =new Scanner(System.in);
-    String nameSearch = sc.nextLine();
+    public HumanList searchByName(String name,HumanList humanList){
 
-    private HumanList humans = new HumanList();
+      HumanList resultOfSearchByName = new HumanList();
 
-   public void addHuman(Human human){
-       humans.add(human);
-   }
+        for (int i = 0; i <humanList.size(); i++) {
+          Human human= humanList.get(i);
+          if(human.getName().equals(name)){
+             resultOfSearchByName.add((human));
+          }
+      }
+        return resultOfSearchByName;
+    }
 
-    public HumanList getHumanList() {
-       HumanList humanList= new HumanList();
-       for (int i = 0; i <humans.size() ; i++) {
-                humanList.add(humans.get(i));
-           }
-        return humans;
+    public HumanList searchBySurname(String surname,HumanList humanList){
+        HumanList resultOfSearchBySurname = new HumanList();
+        for (int i = 0; i <humanList.size(); i++) {
+            Human human= humanList.get(i);
+            if(human.getSurname().equals(surname)){
+                resultOfSearchBySurname.add((human));
+            }
+        }
+        return resultOfSearchBySurname;
     }
 }
 

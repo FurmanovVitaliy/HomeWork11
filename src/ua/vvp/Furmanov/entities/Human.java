@@ -3,12 +3,11 @@ package ua.vvp.Furmanov.entities;
 public class Human {
     private String name;
     private String surname;
-    private String patronymic;
 
-    public Human(String name, String surname, String patronymic) {
+
+    public Human(String name, String surname) {
         this.name = name;
         this.surname = surname;
-        this.patronymic = patronymic;
     }
 
     public String getName() {
@@ -19,10 +18,6 @@ public class Human {
         return surname;
     }
 
-    public String getPatronymic() {
-        return patronymic;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -31,13 +26,10 @@ public class Human {
         this.surname = surname;
     }
 
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
-    }
 
     @Override
     public String toString() {
-        return name+" "+surname+" "+patronymic;
+        return name+" "+surname;
     }
 
     @Override
@@ -50,6 +42,6 @@ public class Human {
         if(obj == null) return false;
         if(!(obj instanceof Human))return false;
         Human human = (Human)obj;
-        return human.name.equals(name) && human.surname.equals(surname) && human.patronymic.equals(patronymic);
+        return human.name.equals(name) && human.surname.equals(surname);
     }
 }

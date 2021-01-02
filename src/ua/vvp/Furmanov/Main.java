@@ -2,48 +2,40 @@ package ua.vvp.Furmanov;
 
 import ua.vvp.Furmanov.entities.Human;
 import ua.vvp.Furmanov.humanService.HumanService;
+import ua.vvp.Furmanov.ui.HumanUI;
 import ua.vvp.Furmanov.utils.HumanList;
 
-import java.util.Arrays;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        //  String sc= "Вася";
-        //  String a= "1";
-        //  HumanService humanService = new HumanService();
-        //  for (int i = 0; i <5 ; i++) {
-        //      String s=sc;
-        //      String c=a;
-        //      Human human = new Human(s,s,c);
-        //      humanService.addHuman(human);
-        //  }
-        //  HumanList result = humanService.getHumansByName();
-
-        //   for (int i = 0; i < result.size(); i++) {
-        //       Human human = result.get(i);
-        //       System.out.println(human.getPatronymic()+" "+ human.getName());
-
+        Scanner sc = new Scanner(System.in);
+        Scanner num = new Scanner(System.in);
+        HumanUI ui = new HumanUI(sc,num);
+        HumanList humanList = new HumanList();
         HumanService humanService = new HumanService();
 
-        Human h1 = new Human("Danil", "Petrov", "Ivanovich");
-        Human h2 = new Human("Ivan", "Saigo", "Vahtangovich");
-        Human h3 = new Human("Suliman", "Petrov", "Jakovich");
-        Human h4 = new Human("Ursula", "Kolska", "Jurivna");
-        Human h5 = new Human("Ursula", "Kolska", "Jurivna");
-        Human h6 = new Human("Ursula", "Kolska", "Jurivna");
-        humanService.addHuman(h1);
-        humanService.addHuman(h2);
-        humanService.addHuman(h3);
-        humanService.addHuman(h4);
-        humanService.addHuman(h5);
-        humanService.addHuman(h6);
+        while (true){
+            System.out.println("-----Press one of the next--------");
+            System.out.println("1.To add person");
+            System.out.println("2.To remove person");
+            System.out.println("3.Search by name");
+            System.out.println("4.Search by surname");
+            System.out.println("5.Show list of people");
+            System.out.println("6.Exit");
+            System.out.println("----------------------------------");
+            System.out.print("Enter the num: ");
+            int menu = num.nextInt();
 
-        HumanList result = humanService.getHumanList();
-        for (int i = 0; i < result.size(); i++) {
-            Human human = result.get(i);
-            System.out.println(human.getPatronymic() + " " + human.getName());
+            if (menu == 1)ui.addHumans(humanList);
+            else if (menu == 2)ui.remove(humanList);
+            else if (menu == 3)ui.searchByName(humanService,humanList);
+            else if (menu == 4)ui.searchBySurname(humanService,humanList);
+            else if (menu == 5)ui.showList(humanList);
+            else if (menu == 6) break;
+
         }
 
 
