@@ -44,7 +44,7 @@ public class HumanUI {
         System.out.print("Enter name to search: ");
         String nameToSearch = sc.nextLine();
         System.out.println("Result of search:");
-        showList(search.searchBySurname(nameToSearch, humans));
+        showList(search.searchByName(nameToSearch, humans));
     }
 
     public void searchBySurname(HumanService search, HumanList humans) {

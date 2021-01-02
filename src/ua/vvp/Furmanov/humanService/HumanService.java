@@ -5,9 +5,7 @@ import ua.vvp.Furmanov.utils.HumanList;
 public class HumanService {
 
     public HumanList searchByName(String name,HumanList humanList){
-
-      HumanList resultOfSearchByName = new HumanList();
-
+        HumanList resultOfSearchByName = new HumanList();
         for (int i = 0; i <humanList.size(); i++) {
           Human human= humanList.get(i);
           if(human.getName().equals(name)){
