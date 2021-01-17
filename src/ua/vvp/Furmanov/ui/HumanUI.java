@@ -1,9 +1,9 @@
 package ua.vvp.Furmanov.ui;
-
 import ua.vvp.Furmanov.entities.Human;
 import ua.vvp.Furmanov.humanService.HumanService;
 import ua.vvp.Furmanov.utils.HumanList;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class HumanUI {
@@ -15,7 +15,7 @@ public class HumanUI {
         this.num = num;
     }
 
-    public void addHumans(HumanList humans) {
+    public void addHumans(List<Human> humans) {
         System.out.print("Enter quantity of new humans: ");
         int count = num.nextInt();
         for (int i = 0; i < count; i++) {
@@ -34,28 +34,22 @@ public class HumanUI {
         return human;
     }
 
-    public void showList(HumanList humans) {
+    public void showList(List<Human> humans) {
         for (int i = 0; i < humans.size(); i++) {
             System.out.println(i+1+". " + humans.get(i));
         }
     }
 
-    public void searchByName(HumanService search, HumanList humans) {
+    public void searchByName(HumanService search, List<Human> humans) {
         System.out.print("Enter name to search: ");
         String nameToSearch = sc.nextLine();
         System.out.println("Result of search:");
         showList(search.searchByName(nameToSearch, humans));
     }
 
-    public void searchBySurname(HumanService search, HumanList humans) {
-        System.out.print("Enter surname to search: ");
-        String surnameToSearch = sc.nextLine();
-        System.out.println("Result of search:");
-        showList(search.searchBySurname(surnameToSearch, humans));
-    }
-    public void remove(HumanList humanList){
+    public void remove(List<Human> humanList){
         System.out.println("Enter index of person to remove: ");
-        int index = num.nextInt();
+        int index = num.nextInt()+1;
         humanList.remove(index);
     }
 }
