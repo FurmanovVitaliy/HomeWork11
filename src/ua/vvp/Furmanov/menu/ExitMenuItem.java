@@ -11,6 +11,6 @@ public class ExitMenuItem extends MenuItem {
 
     @Override
    public void exec() {
-        System.out.println("U want to see it!");
+        System.out.println("Bye.");
     }
 }
